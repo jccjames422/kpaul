@@ -5,6 +5,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    margin-top: 1em;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -21,4 +22,16 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+label {
+    font-weight: bold
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid red;
 }

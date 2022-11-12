@@ -1,4 +1,4 @@
-﻿@model List<InternTest.ViewModels.StudentViewModel>
+﻿@model InternTest.ViewModels.StudentViewModel
 @{
     ViewBag.Title = "Student Page";
 }
@@ -38,9 +38,6 @@
         <thead>
             <tr>
                 <th>
-                    Id
-                </th>
-                <th>
                     First Name
                 </th>
                 <th>
@@ -58,26 +55,23 @@
             </tr>
         </thead>
 
-        @foreach (var item in Model)
+        @foreach (var student in Model.Students)
         {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Id)
+            @Html.DisplayFor(modelItem => student.FirstName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
+            @Html.DisplayFor(modelItem => student.LastName)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.LastName)
+            @Html.DisplayFor(modelItem => student.Field)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Field)
+            @Html.DisplayFor(modelItem => student.Age)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Age)
-        </td>
-        <td>
-            <a style="text-decoration: none; color: red;" onclick="deleteUser(`@item.Id`)">DELETE</a>
+            <a style="text-decoration: none; color: red;" onclick="deleteUser(`@student.Id`)">DELETE</a>
         </td>
     </tr>
         }
@@ -86,6 +80,11 @@
 </div>
 
 <script type="text/javascript">
+
+    function showDeleteUserConfirmationModal(studentId) {
+        $.ajax({});
+    }
+
     function deleteUser(id) {
         $.ajax({
             type: 'POST',

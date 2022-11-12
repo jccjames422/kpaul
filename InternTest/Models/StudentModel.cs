@@ -30,15 +30,6 @@ namespace InternTest.Models
             Age = age;
         }
 
-        public StudentModel(StudentViewModel student)
-        {
-            this.Id = student.Id;
-            this.FirstName = student.FirstName;
-            this.LastName = student.LastName;
-            this.Field = student.Field;
-            this.Age = student.Age;
-        }
-
         public override bool Equals(object obj)
         {
             StudentModel student = (StudentModel)obj;

@@ -13,14 +13,11 @@ namespace InternTest.Controllers
     {
         public ActionResult Index()
         {
-            List<StudentViewModel> students = new List<StudentViewModel>();
-            foreach (var item in FauxStudentDb.students)
-            {
-                students.Add(new StudentViewModel(item));
-            }
-            return View(students);
+            var viewModel = new StudentViewModel { Students = FauxStudentDb.students }; 
+            return View(viewModel);
         }
 
+        [HttpPost]
         public ActionResult DeleteUser(int id)
         {
             int numberRemoved = FauxStudentDb.students.RemoveAll(student => student.Id == id);
@@ -29,19 +26,22 @@ namespace InternTest.Controllers
 
         public ActionResult AddStudent()
         {
-            return View();
+            return View("AddStudent");
         }
 
 
         [HttpPost]
-        public ActionResult AddStudent([Bind(Include = "first,last,field,age")] StudentModel student)
+        public ActionResult AddStudent([Bind(Include = "firstName,lastName,field,age")] StudentModel student)
         {
             if (ModelState.IsValid)
             {
+                student.Id = FauxStudentDb.incrementID++;
                 FauxStudentDb.students.Add(student);
                 return RedirectToAction("Index", "Home", new { area = "", });
+            } else
+            {
+                return View("AddStudent");
             }
-            return View();
         }
 
         //public ActionResult EditUser(string first, string last, string field, int age)
