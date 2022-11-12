@@ -38,6 +38,9 @@
         <thead>
             <tr>
                 <th>
+                    Id
+                </th>
+                <th>
                     First Name
                 </th>
                 <th>
@@ -57,39 +60,41 @@
 
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Field)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Age)
-                </td>
-                <td>
-                    <a style="text-decoration: none; color: red;" onclick="deleteUser(`@item.FirstName`, `@item.LastName`, `@item.Field`, `@item.Age`)">DELETE</a>
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Field)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            <a style="text-decoration: none; color: red;" onclick="deleteUser(`@item.Id`)">DELETE</a>
+        </td>
+    </tr>
         }
 
     </table>
 </div>
 
 <script type="text/javascript">
-    function deleteUser(first, last, field, age) {
+    function deleteUser(id) {
         $.ajax({
             type: 'POST',
             url: '/Home/DeleteUser',
-            data: '{first: "' + first + '",last: "' + last + '",field: "' + field + '",age: "' + age + '" }',
+            data: JSON.stringify({ id: id }),
             contentType: "application/json; charset=utf-8",
-            dataType: "html",
+            dataType: "json",
             success: function (response) {
-                $("#deleteModal").find(".modal-body").html(response);
-                $("#deleteModal").modal('show');
+                window.location.href = "/";
             },
             failure: function (response) {
                 alert(response.responseText);

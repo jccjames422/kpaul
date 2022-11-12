@@ -8,6 +8,7 @@ namespace InternTest.Models
 {
     public class StudentModel
     {
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Field { get; set; }
@@ -15,8 +16,9 @@ namespace InternTest.Models
 
         public StudentModel() { }
 
-        public StudentModel(string firstName, string lastName, string field, int age)
+        public StudentModel(int id, string firstName, string lastName, string field, int age)
         {
+            Id = id;
             FirstName = firstName;
             LastName = lastName;
             Field = field;
@@ -25,6 +27,7 @@ namespace InternTest.Models
 
         public StudentModel(StudentViewModel student)
         {
+            this.Id = student.Id;
             this.FirstName = student.FirstName;
             this.LastName = student.LastName;
             this.Field = student.Field;
@@ -34,11 +37,7 @@ namespace InternTest.Models
         public override bool Equals(object obj)
         {
             StudentModel student = (StudentModel)obj;
-            if(this.FirstName.Equals(student.FirstName) && this.LastName.Equals(student.LastName) && this.Field.Equals(student.Field) && this.Age == student.Age)
-            {
-                return true;
-            }
-            return false;
+            return this.Id.Equals(student.Id);
         }
     }
 }

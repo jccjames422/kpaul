@@ -21,23 +21,14 @@ namespace InternTest.Controllers
             return View(students);
         }
 
-        public ActionResult DeleteUser(string first, string last, string field, int age)
+        public ActionResult DeleteUser(int id)
         {
-            StudentModel student = new StudentModel(first, last, field, age);
-            for(int i = FauxStudentDb.students.Count() - 1; i >= 0; i--)
-            {
-                if (FauxStudentDb.students[i].Equals(student))
-                {
-                    FauxStudentDb.students.RemoveAt(i);
-                }
-            }
-            return RedirectToAction("Index", "Home", new { area = "", });
+            int numberRemoved = FauxStudentDb.students.RemoveAll(student => student.Id == id);
+            return Json(new {studentsRemoved = numberRemoved});
         }
 
         public ActionResult AddStudent()
         {
-            StudentViewModel student = new StudentViewModel();
-
             return View();
         }
 
@@ -45,14 +36,8 @@ namespace InternTest.Controllers
         [HttpPost]
         public ActionResult AddStudent(string first, string last, string field, int age)
         {
-            StudentModel student = new StudentModel(first, last, field, age);
-            for (int i = FauxStudentDb.students.Count() - 1; i >= 0; i--)
-            {
-                if (FauxStudentDb.students[i].Equals(student))
-                {
-                    FauxStudentDb.students.RemoveAt(i);
-                }
-            }
+            StudentModel studentModel = new StudentModel(FauxStudentDb.incrementID++, first, last, field, age);
+            FauxStudentDb.students.Add(studentModel);
             return RedirectToAction("Index", "Home", new { area = "", });
         }
 
