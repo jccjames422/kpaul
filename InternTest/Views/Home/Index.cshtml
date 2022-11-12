@@ -8,40 +8,34 @@
         margin: 16px 0;
     }
 
-        .pager-nav span {
-            display: inline-block;
-            padding: 4px 8px;
-            margin: 1px;
-            cursor: pointer;
-            font-size: 14px;
-            background-color: #FFFFFF;
-            border: 1px solid #e1e1e1;
-            border-radius: 3px;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-        }
+    .pager-nav span {
+        display: inline-block;
+        padding: 4px 8px;
+        margin: 1px;
+        cursor: pointer;
+        font-size: 14px;
+        background-color: #FFFFFF;
+        border: 1px solid #e1e1e1;
+        border-radius: 3px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    }
 
-            .pager-nav span:hover,
-            .pager-nav .pg-selected {
-                background-color: lightseagreen;
-                border: 1px solid #CCCCCC;
-                color: white;
-            }
+    .pager-nav span:hover,
+    .pager-nav .pg-selected {
+        background-color: lightseagreen;
+        border: 1px solid #CCCCCC;
+        color: white;
+    }
 </style>
 
 
 
-<div style="padding-left: 2%;padding-right: 2%;">
-    <button class="btn btn-primary float-end" type="button" data-bs-toggle="modal" data-bs-target="#addModal" onclick="location.href='@Url.Action("Add", "Home", new {})'">Add Student</button>
+<div class="row">
+    <button class="btn btn-primary" style="margin-block:1em;" type="button" data-bs-toggle="modal" data-bs-target="#addModal" onclick="location.href='@Url.Action("Add", "Home", new {})'">Add Student</button>
 </div>
-
-<br />
-<br />
-<br />
-
-
-
+<div class="row">
     <table id="pager" class="table table-bordered">
-        <thread>
+        <thead>
             <tr>
                 <th>
                     First Name
@@ -59,7 +53,7 @@
                     Delete
                 </th>
             </tr>
-        </thread>
+        </thead>
 
         @foreach (var item in Model)
         {
@@ -85,7 +79,7 @@
     </table>
 </div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
     function deleteUser(first, last, field, age) {
         $.ajax({
             type: 'POST',
@@ -106,26 +100,23 @@
         });
     }
 
-
-
-
-        //function editUser(first, last, field, age) {
-        //    $.ajax({
-        //        type: 'POST',
-        //        url: '/Home/EditUser',
-        //        data: '{first: "' + first + '",last: "' + last + '",field: "' + field + '",age: "' + age + '" }',
-        //        contentType: "application/json; charset=utf-8",
-        //        dataType: "html",
-        //        success: function (response) {
-        //            $("#deleteModal").find(".modal-body").html(response);
-        //            $("#deleteModal").modal('show');
-        //        },
-        //        failure: function (response) {
-        //            alert(response.responseText);
-        //        },
-        //        error: function (response) {
-        //            alert(response.responseText);
-        //        }
-        //    });
-        //}
+    //function editUser(first, last, field, age) {
+    //    $.ajax({
+    //        type: 'POST',
+    //        url: '/Home/EditUser',
+    //        data: '{first: "' + first + '",last: "' + last + '",field: "' + field + '",age: "' + age + '" }',
+    //        contentType: "application/json; charset=utf-8",
+    //        dataType: "html",
+    //        success: function (response) {
+    //            $("#deleteModal").find(".modal-body").html(response);
+    //            $("#deleteModal").modal('show');
+    //        },
+    //        failure: function (response) {
+    //            alert(response.responseText);
+    //        },
+    //        error: function (response) {
+    //            alert(response.responseText);
+    //        }
+    //    });
+    //}
 </script>
