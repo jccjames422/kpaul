@@ -5,46 +5,48 @@
         font-weight: bold
     }
 </style>
+
 @using (Html.BeginForm("AddStudent", "Home", FormMethod.Post))
 {
     <div class="form-horizontal">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
-
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
-                    @Html.Label("First Name")
+                    @Html.LabelFor(model => model.FirstName, "First Name", new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName)
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                    @Html.Label("Last Name")
+                    @Html.LabelFor(model => model.LastName, "Last Name", new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName)
                     </div>
                 </div>
             </div>
-            
         </div>
 
         <div class="row">
             <div class="col-lg-6">
                 <div class="form-group">
-                    @Html.Label("Field")
+                    @Html.LabelFor(model => model.Field, "Field (Major)", new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Field, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Field)
                     </div>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="form-group">
-                    @Html.Label("Age")
+                    @Html.LabelFor(model => model.Age, "Age", new { @class = "col-md-2 control-label" })
                     <div class="col-md-10">
                         @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Age)
                     </div>
                 </div>
             </div>
@@ -58,5 +60,3 @@
         </div>
     </div>
 }
-
-

@@ -34,20 +34,14 @@ namespace InternTest.Controllers
 
 
         [HttpPost]
-        public ActionResult AddStudent(string first, string last, string field, int age)
+        public ActionResult AddStudent([Bind(Include = "first,last,field,age")] StudentModel student)
         {
-            StudentModel studentModel = new StudentModel(FauxStudentDb.incrementID++, first, last, field, age);
-            FauxStudentDb.students.Add(studentModel);
-            return RedirectToAction("Index", "Home", new { area = "", });
-        }
-
-
-        [HttpPost]
-        public ActionResult AddStudent(StudentViewModel student)
-        {
-            StudentModel studentModel = new StudentModel(student);
-            FauxStudentDb.students.Add(studentModel);
-            return RedirectToAction("Index", "Home", new { area = "", });
+            if (ModelState.IsValid)
+            {
+                FauxStudentDb.students.Add(student);
+                return RedirectToAction("Index", "Home", new { area = "", });
+            }
+            return View();
         }
 
         //public ActionResult EditUser(string first, string last, string field, int age)
