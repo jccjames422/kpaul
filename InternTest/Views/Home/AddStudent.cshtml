@@ -1,42 +1,42 @@
 ﻿@model InternTest.Models.StudentModel
 <div class="container">
     <div style="display:flex; justify-content: center;">
-    @using (Html.BeginForm("AddStudent", "Home", FormMethod.Post))
-    {
-        <div class="form-horizontal" style="min-width:35em;">
-            <div class="form-group">
-                @Html.LabelFor(model => model.FirstName, "First Name", new { @class = "col-md-3 control-label" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.FirstName, "The first name is required", new { @class = "text-danger" })
+        @using (Html.BeginForm("AddStudent", "Home", FormMethod.Post))
+        {
+            <div class="form-horizontal" style="min-width:33em;">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, "First Name", new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "The first name is required", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, "Last Name", new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "The last name is required", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Field, "Field (Major)", new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Field, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Field, "The field of study is required", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Age, "Age", new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Age, "The age is required", new { @class = "text-danger" })
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.LastName, "Last Name", new { @class = "col-md-3 control-label" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.LastName, "The last name is required", new { @class = "text-danger" })
-                </div>
+            <div style="display:flex; justify-content:end">
+                <button type="submit" class="btn btn-primary" style="margin-right:1em;">Add</button>
+                @Html.ActionLink("Back", "Index", "Home", new { @class = "btn btn-default", @role="button" })
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Field, "Field (Major)", new { @class = "col-md-3 control-label" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.Field, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Field, "The field of study is required", new { @class = "text-danger" })
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.Age, "Age", new { @class = "col-md-3 control-label" })
-                <div class="col-md-9">
-                    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Age, "The age is required", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-        <div style="display:flex; justify-content:end">
-            <button type="submit" class="btn btn-primary" style="margin-right:1em;">Add</button>
-            <button type="button" class="btn btn-secondary">Back</button>
-        </div>
-    }
+        }
     </div>
 </div>
