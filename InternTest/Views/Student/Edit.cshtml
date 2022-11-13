@@ -1,7 +1,7 @@
 ﻿@model InternTest.Models.StudentModel
 <div class="container">
     <div style="display:flex; justify-content: center;">
-        @using (Html.BeginForm("AddStudent", "Home", FormMethod.Post))
+        @using (Html.BeginForm("Update", "Student", FormMethod.Post))
         {
             <div class="form-horizontal" style="min-width:33em;">
                 <div class="form-group">
@@ -35,7 +35,7 @@
             </div>
             <div style="display:flex; justify-content:end">
                 <button type="submit" class="btn btn-primary" style="margin-right:1em;">Add</button>
-                @Html.ActionLink("Back", "Index", "Home", new { @class = "btn btn-default", @role="button" })
+                @Html.ActionLink("Back", "Index", new { controller = "Home" }, new { @class = "btn btn-default", @role="button" })
             </div>
         }
     </div>

@@ -3,79 +3,36 @@
     ViewBag.Title = "Student Page";
 }
 
-<style>
-    .pager-nav {
-        margin: 16px 0;
-    }
-
-        .pager-nav span {
-            display: inline-block;
-            padding: 4px 8px;
-            margin: 1px;
-            cursor: pointer;
-            font-size: 14px;
-            background-color: #FFFFFF;
-            border: 1px solid #e1e1e1;
-            border-radius: 3px;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-        }
-
-            .pager-nav span:hover,
-            .pager-nav .pg-selected {
-                background-color: lightseagreen;
-                border: 1px solid #CCCCCC;
-                color: white;
-            }
-</style>
-
 @Html.Partial("_DeleteStudentModal")
 
 <div class="row">
-    @Html.ActionLink("Add Student", "AddStudent", "Home", new { @class = "btn btn-primary", @style="margin-bottom:1em" })
+    @Html.ActionLink("Add Student", "Create", new { controller = "Student" }, new { @class = "btn btn-primary", @style = "margin-bottom:1em" })
 </div>
 <div class="row">
     <table id="pager" class="table table-bordered">
         <thead>
             <tr>
-                <th>
-                    First Name
-                </th>
-                <th>
-                    Last Name
-                </th>
-                <th>
-                    Feild
-                </th>
-                <th>
-                    Age
-                </th>
-                <th>
-                    Delete
-                </th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Feild</th>
+                <th>Age</th>
+                <th>Delete</th>
             </tr>
         </thead>
-
-        @foreach (var student in Model.Students)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => student.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => student.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => student.Field)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => student.Age)
-                </td>
-                <td>
-                    <a style="text-decoration: none; color: red;" data-toggle="modal" data-target="#student_@student.Id">DELETE</a>
-                </td>
-            </tr>
-        }
-
+        <tbody>
+            @foreach (var student in Model.Students)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => student.FirstName)</td>
+                    <td>@Html.DisplayFor(modelItem => student.LastName)</td>
+                    <td>@Html.DisplayFor(modelItem => student.Field)</td>
+                    <td>@Html.DisplayFor(modelItem => student.Age)</td>
+                    <td>
+                        <a style="text-decoration: none; color: red;" data-toggle="modal" data-target="#student_@student.Id">DELETE</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 </div>
 
@@ -84,7 +41,7 @@
     function deleteStudent(id) {
         $.ajax({
             type: 'POST',
-            url: '/Home/DeleteStudent',
+            url: '/Student/Destroy',
             data: JSON.stringify({ id: id }),
             contentType: "application/json; charset=utf-8",
             dataType: "json",
@@ -100,23 +57,4 @@
         });
     }
 
-            //function editUser(first, last, field, age) {
-            //    $.ajax({
-            //        type: 'POST',
-            //        url: '/Home/EditUser',
-            //        data: '{first: "' + first + '",last: "' + last + '",field: "' + field + '",age: "' + age + '" }',
-            //        contentType: "application/json; charset=utf-8",
-            //        dataType: "html",
-            //        success: function (response) {
-            //            $("#deleteModal").find(".modal-body").html(response);
-            //            $("#deleteModal").modal('show');
-            //        },
-            //        failure: function (response) {
-            //            alert(response.responseText);
-            //        },
-            //        error: function (response) {
-            //            alert(response.responseText);
-            //        }
-            //    });
-            //}
 </script>
