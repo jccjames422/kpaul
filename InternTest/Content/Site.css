@@ -5,7 +5,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    margin-top: 1em;
+    padding-top: 1em;
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -15,13 +15,6 @@
 */
 .dl-horizontal dt {
     white-space: normal;
-}
-
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
 }
 
 label {
@@ -34,4 +27,9 @@ label {
 
 .input-validation-error {
     border: 1px solid red;
+}
+
+#addStudentButtons {
+    display: flex;
+    justify-content: end;
 }

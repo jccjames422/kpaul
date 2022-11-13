@@ -13,12 +13,14 @@ namespace InternTest.Controllers
     {
         public ActionResult Index()
         {
-            var viewModel = new StudentViewModel { Students = FauxStudentDb.students }; 
+            var viewModel = new StudentViewModel {
+                Students = FauxStudentDb.students,
+            }; 
             return View(viewModel);
         }
 
         [HttpPost]
-        public ActionResult DeleteUser(int id)
+        public ActionResult DeleteStudent(int id)
         {
             int numberRemoved = FauxStudentDb.students.RemoveAll(student => student.Id == id);
             return Json(new {studentsRemoved = numberRemoved});
