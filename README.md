@@ -2,7 +2,7 @@
 
 ## Initial Cleanup
 The Home/Index view was missing a `<div>` tag above the `<table>`.
-The Home/Index view had a `<thread>` tag where there shoudl be a `<thead>` tag.
+The Home/Index view had a `<thread>` tag where there should be a `<thead>` tag.
 ## Step One
 >First is the Delete button on the table rows. Whenever clicked, it should remove the row and show this change. However, the change is not reflected until the page is refreshed.
 ### Fixed Delete Functionality
