@@ -6,17 +6,20 @@
 @Html.Partial("_DeleteStudentModal")
 
 <div class="row">
-    @Html.ActionLink("Add Student", "Create", new { controller = "Student" }, new { @class = "btn btn-primary", @style = "margin-bottom:1em" })
+    <div class="col-xs-12">
+        @Html.ActionLink("Add Student", "New", new { controller = "Student" }, new { @class = "btn btn-primary", @style = "margin-bottom:1em" })
+    </div>
 </div>
 <div class="row">
+    <div class="col-xs-12">
     <table id="pager" class="table table-bordered">
         <thead>
             <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Feild</th>
+                <th>Field of Study</th>
                 <th>Age</th>
-                <th>Delete</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -28,12 +31,14 @@
                     <td>@Html.DisplayFor(modelItem => student.Field)</td>
                     <td>@Html.DisplayFor(modelItem => student.Age)</td>
                     <td>
-                        <a style="text-decoration: none; color: red;" data-toggle="modal" data-target="#student_@student.Id">DELETE</a>
+                        @Html.ActionLink("EDIT", "Edit", new { id = student.Id, controller = "Student" }, new { @class = "btn btn-sm btn-primary" })
+                        <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#student_@student.Id">DELETE</button>
                     </td>
                 </tr>
             }
         </tbody>
     </table>
+    </div>
 </div>
 
 <script type="text/javascript">

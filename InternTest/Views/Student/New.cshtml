@@ -1,0 +1,13 @@
+﻿@model InternTest.Models.StudentModel
+<div class="container">
+    <div style="display:flex; justify-content: center;">
+        @using (Html.BeginForm("Create", "Student", FormMethod.Post))
+        {
+            @Html.Partial("_EditStudentForm")
+            <div style="display:flex; justify-content:end">
+                <button type="submit" class="btn btn-primary" style="margin-right:1em;">Add</button>
+                @Html.ActionLink("Back", "Index", new { controller = "Home" }, new { @class = "btn btn-default", @role = "button" })
+            </div>
+        }
+    </div>
+</div>

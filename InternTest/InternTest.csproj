@@ -168,6 +168,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Shared\_DeleteStudentModal.cshtml" />
+    <Content Include="Views\Student\New.cshtml" />
+    <Content Include="Views\Shared\_EditStudentForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
