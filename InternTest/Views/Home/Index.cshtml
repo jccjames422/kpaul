@@ -26,11 +26,11 @@
             @foreach (var student in Model.Students)
             {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => student.FirstName)</td>
-                    <td>@Html.DisplayFor(modelItem => student.LastName)</td>
-                    <td>@Html.DisplayFor(modelItem => student.Field)</td>
-                    <td>@Html.DisplayFor(modelItem => student.Age)</td>
-                    <td>
+                    <td style="vertical-align:middle">@Html.DisplayFor(modelItem => student.FirstName)</td>
+                    <td style="vertical-align:middle">@Html.DisplayFor(modelItem => student.LastName)</td>
+                    <td style="vertical-align:middle">@Html.DisplayFor(modelItem => student.Field)</td>
+                    <td style="vertical-align:middle">@Html.DisplayFor(modelItem => student.Age)</td>
+                    <td style="vertical-align:middle">
                         @Html.ActionLink("EDIT", "Edit", new { id = student.Id, controller = "Student" }, new { @class = "btn btn-sm btn-primary" })
                         <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#student_@student.Id">DELETE</button>
                     </td>
